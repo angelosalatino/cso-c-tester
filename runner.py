@@ -9,7 +9,7 @@
 #     
 # * in this folder run ```source env/bin/activate```
 #     
-# * then ```python RunnerStanford.py```
+# * then ```python runner.py```
 
 # In[ ]:
 

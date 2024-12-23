@@ -22,7 +22,7 @@ import datetime;
 # In[ ]:
 
 
-with open("sample_data_acm_cleaned.json","r") as fr:
+with open("../test_sample/sample_data_acm_cleaned.json","r") as fr:
     papers = json.load(fr)
 
 
@@ -32,7 +32,7 @@ with open("sample_data_acm_cleaned.json","r") as fr:
 cc = CSOClassifier(modules = "both", enhancement = "all", explanation = True, filter_by=["artificial intelligence"])
 
 
-cleaned_papers = list()
+cleaned_papers = dict()
 for pos, paper in enumerate(papers):
 
     t_paper = dict()
@@ -40,9 +40,9 @@ for pos, paper in enumerate(papers):
     t_paper["abstract"] = paper["abstract"]
     t_paper["keywords"] = str(paper["keywords"])
     t_paper["link"]     = paper["link"]
-    cleaned_papers.append(t_paper)
+    cleaned_papers[t_paper["link"]] = t_paper
 
-results = cc.batch_run(papers, workers = 2)
+results = cc.batch_run(cleaned_papers, workers = 2)
         
 
 
